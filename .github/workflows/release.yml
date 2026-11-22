@@ -1,0 +1,61 @@
+name: Release
+
+# Publishes on a version tag you push, e.g.:
+#   git tag v0.1.0 && git push origin v0.1.0
+# Nothing publishes on pushes or pull requests — only on a v* tag.
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  crates:
+    name: Publish to crates.io
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Publish shrug-core
+        run: cargo publish -p shrug-core
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Wait for shrug-core to appear in the index
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf -H 'User-Agent: shrug-release (infinitybricks)' \
+                 https://crates.io/api/v1/crates/shrug-core | grep -q '"0.1.0"'; then
+              echo "shrug-core is live"; exit 0
+            fi
+            echo "waiting for crates.io index ($i)…"; sleep 10
+          done
+          echo "timed out waiting for shrug-core"; exit 1
+      - name: Publish shrug-ai
+        run: cargo publish -p shrug-ai
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+  docker:
+    name: Publish image to GHCR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ghcr.io/infinitybricks/shrug
+          tags: |
+            type=semver,pattern={{version}}
+            type=raw,value=latest
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

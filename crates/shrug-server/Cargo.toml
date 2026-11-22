@@ -1,5 +1,8 @@
+# Published to crates.io as `shrug-ai` (the plain `shrug` name is taken by an
+# unrelated crate). The installed binary and the library are still named `shrug`:
+# `cargo install shrug-ai` gives you a `shrug` command.
 [package]
-name = "shrug"
+name = "shrug-ai"
 version = "0.1.0"
 description = "shrug.ai — a System One / decisions-compatible HTTP API that answers with a random draw. No model, no inference, sub-millisecond. Run it locally as a mock or a chance-level baseline."
 edition.workspace = true

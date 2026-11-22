@@ -29,8 +29,8 @@ docker run --rm -p 8080:8080 ghcr.io/infinitybricks/shrug
 ### Cargo
 
 ```bash
-cargo install shrug
-shrug   # listens on 0.0.0.0:8080
+cargo install shrug-ai   # the crate is `shrug-ai`; the binary is `shrug`
+shrug                     # listens on 0.0.0.0:8080
 ```
 
 ### From source
