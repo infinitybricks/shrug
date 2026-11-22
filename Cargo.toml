@@ -17,3 +17,8 @@ rand = { version = "0.8", features = ["small_rng"] }
 lto = true
 codegen-units = 1
 strip = true
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

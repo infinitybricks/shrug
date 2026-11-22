@@ -20,24 +20,28 @@ this runs a random number generator.
 
 ## Quick start
 
-### Docker
+Pick whichever fits — every one gives you a `shrug` server on `:8080`:
 
 ```bash
+# npx — no install (great for tests/CI)
+npx @infinitybricks/shrug-ai
+
+# Docker
 docker run --rm -p 8080:8080 ghcr.io/infinitybricks/shrug
-```
 
-### Cargo
+# shell installer (macOS / Linux, prebuilt binary — no toolchain)
+curl --proto '=https' --tlsv1.2 -LsSf \
+  https://github.com/infinitybricks/shrug/releases/latest/download/shrug-ai-installer.sh | sh
 
-```bash
-cargo install shrug-ai   # the crate is `shrug-ai`; the binary is `shrug`
-shrug                     # listens on 0.0.0.0:8080
-```
+# Homebrew
+brew install infinitybricks/homebrew-tap/shrug-ai
 
-### From source
+# Cargo (the crate is `shrug-ai`; the binary is `shrug`)
+cargo install shrug-ai        # or: cargo binstall shrug-ai
 
-```bash
+# from source
 git clone https://github.com/infinitybricks/shrug && cd shrug
-cargo run --release -p shrug
+cargo run --release -p shrug-ai
 ```
 
 Then make a decision:
