@@ -1,0 +1,24 @@
+{
+  "model": "gpt-6-luna",
+  "input": "the sky at noon",
+  "questions": [
+    { "type": "choice", "name": "color",
+      "choices": [
+        { "value": "red", "description": "warm" },
+        { "value": "blue", "description": "cool" },
+        { "value": "green", "description": "earthy" }
+      ] },
+    { "type": "predicate", "name": "is_daytime", "instructions": "is it day?" },
+    { "type": "score", "name": "brightness",
+      "levels": [
+        { "label": "dim", "description": "low" },
+        { "label": "bright", "description": "high" }
+      ] }
+  ],
+  "shrug": {
+    "distributions": {
+      "color": { "weights": { "red": 0.5, "blue": 0.3, "green": 0.2 } },
+      "is_daytime": { "p_true": 0.7 }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "answers": [
+    { "type": "choice", "name": "color", "choice": "red",
+      "probabilities": [
+        { "value": "red", "probability": 0.5 },
+        { "value": "blue", "probability": 0.3 },
+        { "value": "green", "probability": 0.2 }
+      ],
+      "confidence": 0.5 },
+    { "type": "predicate", "name": "is_daytime", "probability": 0.7 },
+    { "type": "score", "name": "brightness", "score": 1,
+      "probabilities": [
+        { "value": 0, "label": "dim", "probability": 0.4 },
+        { "value": 1, "label": "bright", "probability": 0.6 }
+      ],
+      "confidence": 0.6 }
+  ],
+  "usage": { "input_tokens": 0, "input_tokens_details": { "cached_tokens": 0, "cache_write_tokens": 0 } }
+}

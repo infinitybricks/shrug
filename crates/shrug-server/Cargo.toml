@@ -1,0 +1,34 @@
+[package]
+name = "shrug"
+version = "0.1.0"
+description = "shrug.ai — a System One / decisions-compatible HTTP API that answers with a random draw. No model, no inference, sub-millisecond. Run it locally as a mock or a chance-level baseline."
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["random", "mock", "decisions", "baseline", "testing"]
+categories = ["web-programming::http-server", "development-tools::testing"]
+
+[[bin]]
+name = "shrug"
+path = "src/main.rs"
+
+[lib]
+name = "shrug"
+path = "src/lib.rs"
+
+[dependencies]
+shrug-core = { path = "../shrug-core", version = "0.1.0" }
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+serde = { workspace = true }
+serde_json = { workspace = true, features = ["preserve_order"] }
+rand = { workspace = true }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+tracing-appender = "0.2"
+anyhow = "1"
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"

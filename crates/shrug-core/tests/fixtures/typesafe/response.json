@@ -1,0 +1,12 @@
+{
+  "model": "system-one",
+  "answers": {
+    "color": { "type": "choice", "choice": "red", "confidence": 0.5,
+      "probabilities": { "red": 0.5, "blue": 0.3, "green": 0.2 } },
+    "is_daytime": { "type": "noul", "noul": 0.7 },
+    "brightness": { "type": "score", "score": 1, "confidence": 0.6,
+      "legend": ["dim", "bright"],
+      "probabilities": [0.4, 0.6] }
+  },
+  "usage": { "input_tokens": 0, "output_tokens": 0 }
+}

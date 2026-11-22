@@ -1,0 +1,17 @@
+{
+  "model": "system-one",
+  "state": "the sky at noon",
+  "questions": {
+    "color": { "type": "choice", "instructions": "pick a color",
+      "criteria": { "red": "warm", "blue": "cool", "green": "earthy" } },
+    "is_daytime": { "type": "noul", "instructions": "is it day?" },
+    "brightness": { "type": "score", "instructions": "how bright",
+      "criteria": ["dim", "bright"] }
+  },
+  "shrug": {
+    "distributions": {
+      "color": { "weights": { "red": 0.5, "blue": 0.3, "green": 0.2 } },
+      "is_daytime": { "p_true": 0.7 }
+    }
+  }
+}

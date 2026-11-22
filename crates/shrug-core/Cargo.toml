@@ -1,0 +1,15 @@
+[package]
+name = "shrug-core"
+version = "0.1.0"
+description = "The draw engine behind shrug.ai — random answers shaped to the System One / decisions protocol."
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["random", "mock", "decisions", "baseline", "testing"]
+categories = ["simulation", "development-tools::testing"]
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true, features = ["preserve_order"] }
+rand = { workspace = true }
