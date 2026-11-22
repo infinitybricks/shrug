@@ -27,11 +27,11 @@ Pick whichever fits — every one gives you a `shrug` server on `:8080`:
 npx @infinitybricks/shrug-ai
 
 # Docker
-docker run --rm -p 8080:8080 ghcr.io/infinitybricks/shrug
+docker run --rm -p 8080:8080 ghcr.io/infinitybricks/shrug-ai
 
 # shell installer (macOS / Linux, prebuilt binary — no toolchain)
 curl --proto '=https' --tlsv1.2 -LsSf \
-  https://github.com/infinitybricks/shrug/releases/latest/download/shrug-ai-installer.sh | sh
+  https://github.com/infinitybricks/shrug-ai/releases/latest/download/shrug-ai-installer.sh | sh
 
 # Homebrew
 brew install infinitybricks/homebrew-tap/shrug-ai
@@ -40,7 +40,7 @@ brew install infinitybricks/homebrew-tap/shrug-ai
 cargo install shrug-ai        # or: cargo binstall shrug-ai
 
 # from source
-git clone https://github.com/infinitybricks/shrug && cd shrug
+git clone https://github.com/infinitybricks/shrug-ai && cd shrug-ai
 cargo run --release -p shrug-ai
 ```
 

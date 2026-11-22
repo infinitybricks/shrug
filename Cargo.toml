@@ -5,7 +5,7 @@ members = ["crates/shrug-core", "crates/shrug-server"]
 [workspace.package]
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/infinitybricks/shrug"
+repository = "https://github.com/infinitybricks/shrug-ai"
 homepage = "https://shrug.ai"
 
 [workspace.dependencies]
