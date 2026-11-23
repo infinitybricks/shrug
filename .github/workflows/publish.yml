@@ -2,14 +2,21 @@ name: Release
 
 # Publishes on a version tag you push, e.g.:
 #   git tag v0.1.0 && git push origin v0.1.0
-# Nothing publishes on pushes or pull requests — only on a v* tag.
+# workflow_dispatch republishes ONLY the Docker image for a given version
+# (the crates.io job is tag-only, so it won't try to re-upload existing crates).
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to tag the Docker image (e.g. 0.1.0)"
+        required: true
 
 jobs:
   crates:
     name: Publish to crates.io
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -52,6 +59,7 @@ jobs:
           images: ghcr.io/infinitybricks/shrug-ai
           tags: |
             type=semver,pattern={{version}}
+            type=raw,value=${{ inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
             type=raw,value=latest
       - uses: docker/build-push-action@v6
         with:
