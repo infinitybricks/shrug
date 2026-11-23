@@ -94,6 +94,13 @@ shrug-core = "0.1"
 There is no authentication and no database — shrug serves anyone who can reach it.
 It's built for local development, tests, CI, and benchmarking.
 
+## Learn more
+
+- [API docs](https://shrug.ai/docs) — both request/response shapes, the density
+  extension, and the error/limit tables (the same shapes this binary serves).
+- [Benchmarks](https://shrug.ai/benchmarks) — how a draw stacks up on speed, local
+  and in the cloud.
+
 ## Hosted
 
 Want a managed, authenticated, metered endpoint with an API key and a dashboard?
